@@ -27,17 +27,29 @@
     <h1> Bienvenue a tous surmon blog</h1>
     <P>ici sont redigés tous les billets liés a mon voyage</P>
 
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>du <?= $data['creation_date_fr'] ?></em>
-        </h3>
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-        </p>
-    </div>
+
+
+
+    <?php
+    while ($data = $posts->fetch())
+    {
+        ?>
+        <div class="news">
+            <h3>
+                <?= htmlspecialchars($data['title']) ?>
+                <em>le <?= $data['creation_date_fr'] ?></em>
+            </h3>
+
+            <p>
+                <?= nl2br(htmlspecialchars($data['content'])) ?>
+                <br />
+                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+            </p>
+        </div>
+        <?php
+    }
+    $posts->closeCursor();
+    ?>
 
 </body>
 </html>

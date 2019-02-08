@@ -5,10 +5,13 @@
 require_once('model/AllPostsManager.php');
 
 function showAllPosts(){
-    $postManager = new PostManager();
+    $postManager = new AllPostsManager();
     $posts = $postManager->lastNinePosts();
 
     require('view/frontend/homePage.php');
+}
+function showThisPost(){
+
 }
 
 
