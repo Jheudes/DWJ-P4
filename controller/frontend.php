@@ -11,6 +11,17 @@ function showAllPosts(){
     require('view/frontend/homePage.php');
 }
 function showThisPost(){
+    $postManager = new AllPostsManager();
+    $post = $postManager->showThisPost($_GET['id']);
+    $comments = $postManager->loadComments($_GET['id']);
+
+    require('view/frontend/postPage.php');
+}
+function addComment($postId, $author, $comment){
+    $commentAdder = new AllPostsManager();
+    $comment = $commentAdder->addComment($postId,$author,$comment);
+
+    header('Location: index.php?action=post&id=' . $postId);
 
 }
 
