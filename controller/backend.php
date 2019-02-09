@@ -1,4 +1,18 @@
 <?php
+
+
+
+
+function showAdminHomePage(){
+    require('view/backend/adminhomepage.php');
+}
+function showCreatePostPage(){
+    require('view/backend/createpost.php');
+}
+
+
+
+
 /**
  * Created by PhpStorm.
  * User: Jimmy

@@ -1,13 +1,20 @@
 <?php
 
-require('controller/frontend.php');
+require('controller/backend.php');
 /**
  *if (pas de session) call adminloginpage
  *else call  adminhomepage
  */
 
+if(isset($_GET['action'])){
+    if($_GET['action'] == 'createPost'){
+        showCreatePostPage();
+    }
 
-
+}
+else {
+    showAdminHomePage();
+}
 
 
 

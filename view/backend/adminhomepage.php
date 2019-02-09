@@ -1,7 +1,6 @@
 <?php
 
-/**
- * ___________
+/** ___________
  * deconexion
  * __________
  * creer nouveau post
@@ -11,11 +10,21 @@
  * gerer les coms
  * ____________
  *
- *
- *
  */
-
-
+?>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Gestion du blog</title>
+        <link href="public/css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+    <button formaction="">Déconexion</button><br/>
+    <a href="index-admin.php?action=createPost">Crée un nouveau post</a><br/>
+    <button>Editer un post</button><br/>
+    <button>Moderer les commentaire</button><br/>
+    </body>
+</html>
 
 
 
