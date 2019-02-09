@@ -10,6 +10,13 @@ if(isset($_GET['action'])){
     if($_GET['action'] == 'createPost'){
         showCreatePostPage();
     }
+    else if($_GET['action'] == 'showAllPosts'){
+        showAllPosts();
+
+    }
+    else if($_GET['action'] == 'postToEdit'){
+        postEditor();
+    }
 
 }
 else {

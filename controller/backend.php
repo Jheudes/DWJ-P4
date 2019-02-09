@@ -1,13 +1,26 @@
 <?php
 
-
-
-
 function showAdminHomePage(){
     require('view/backend/adminhomepage.php');
 }
 function showCreatePostPage(){
     require('view/backend/createpost.php');
+}
+
+
+require_once('model/BackEndManager.php');
+
+function showAllPosts(){
+    $postManager = new BackEndManager();
+    $posts = $postManager->showAllPosts();
+
+    require('view/backend/showallposts.php');
+}
+function postEditor(){
+    $postManager = new BackEndManager();
+    $post = $postManager->loadPostToEdit($_GET['id']);
+
+    require('view/backend/editpost.php');
 }
 
 
