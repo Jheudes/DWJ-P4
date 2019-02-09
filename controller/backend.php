@@ -22,6 +22,11 @@ function postEditor(){
 
     require('view/backend/editpost.php');
 }
+function commentManager(){
+    $commentsManager = new BackEndManager();
+    $comments = $commentsManager->loadComments();
+    require('view/backend/commentsmanagement.php');
+}
 
 
 

@@ -17,12 +17,14 @@ if(isset($_GET['action'])){
     else if($_GET['action'] == 'postToEdit'){
         postEditor();
     }
+    else if($_GET['action'] == 'commentManager'){
+        commentManager();
+    }
 
 }
 else {
     showAdminHomePage();
 }
-
 
 
 

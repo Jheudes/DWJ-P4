@@ -17,8 +17,11 @@ class BackEndManager
 
         return $post;
     }
-    public function showAllComments(){
+    public function loadComments(){
+        $db = $this->connectToDB();
+        $comments = $db->query('SELECT id, author, post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
 
+        return $comments;
     }
     public function editOneComment(){// dunno too
         $db = $this->connectToDB();
