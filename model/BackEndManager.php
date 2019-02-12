@@ -26,6 +26,11 @@ class BackEndManager
     public function editOneComment(){// dunno too
         $db = $this->connectToDB();
     }
+    public function postToAdd($title,$content){
+        $db = $this->connectToDB();
+        $post = $db->prepare('INSERT INTO `posts`(`title`, `content`, `creation_date`) VALUES(?, ?, NOW())');
+        $affectedPost = $post->execute(array($title, $content));
+    }
     private function connectToDB(){
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         return $db;

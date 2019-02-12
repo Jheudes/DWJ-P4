@@ -20,6 +20,9 @@ if(isset($_GET['action'])){
     else if($_GET['action'] == 'commentManager'){
         commentManager();
     }
+    else if($_GET['action'] == 'addThisPostToDB'){
+        addPostToDB($_POST['title'], $_POST['content']);
+    }
 
 }
 else {

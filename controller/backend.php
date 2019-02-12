@@ -27,6 +27,11 @@ function commentManager(){
     $comments = $commentsManager->loadComments();
     require('view/backend/commentsmanagement.php');
 }
+function addPostToDB($title,$content){
+    $postToAdd = new BackEndManager();
+    $post = $postToAdd-> postToAdd($title,$content);
+
+}
 
 
 

@@ -11,6 +11,9 @@
         <meta charset="utf-8" />
         <title>Blog Incroyable</title>
         <link href="public/css/style.css" rel="stylesheet" />
+        <script type="text/javascript" src="https://code.jquery.com/jqery-lastest.min.js"></script>
+        <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=pzrgzgwtphqwvf4ygn3mcsg1t1rnqk8z1n44qdlgwow213do"></script>
+
     </head>
     <body>
 
@@ -29,6 +32,17 @@
                 <?= nl2br(htmlspecialchars($post['content'])) ?>
             </p>
         </div>
+
+        <script>
+            tinymce.init({
+                selector:'#editarea',
+
+            });
+
+        </script>
+
+        <textarea id="editarea"></textarea>
+
     </body>
 </html>
 
