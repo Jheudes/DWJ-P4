@@ -34,6 +34,9 @@ if(isset($_GET['action'])){
         deleteThisComment($_GET['id']);
 
     }
+    else if($_GET['action'] == 'commentToEdit'){
+        showOneComment();
+    }
 
 }
 else {
