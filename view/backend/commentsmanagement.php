@@ -20,7 +20,8 @@ while ($data = $comments->fetch())
     <h3>
         <?= htmlspecialchars($data['author']) ?>
         <em>le <?= $data['comment_date_fr'] ?></em>
-        <em>| du billet n° <?= $data['post_id'] ?></em>
+        <em>| du billet n° <?= $data['post_id'] ?></em><br/>
+        <em><?= $data['comment'] ?></em>
     </h3>
 
     <a href="index-admin.php?action=commentToEdit&amp;id=<?= $data['id'] ?>">Modifier</a>

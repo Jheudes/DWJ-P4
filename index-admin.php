@@ -35,7 +35,10 @@ if(isset($_GET['action'])){
 
     }
     else if($_GET['action'] == 'commentToEdit'){
-        showOneComment();
+        showOneComment($_GET['id']);
+    }
+    else if($_GET['action'] == 'updateThisComment'){
+        updateThisComment($_POST['editauthor'], $_POST['updatedcomment']);
     }
 
 }

@@ -23,19 +23,15 @@ class BackEndManager
 
         return $comments;
     }
-    public function editOneComment(){// dunno too
-        $db = $this->connectToDB();
-    }
     public function postToAdd($title,$content){
         $db = $this->connectToDB();
         $post = $db->prepare('INSERT INTO `posts`(`title`, `content`, `creation_date`) VALUES(?, ?, NOW())');
-        $affectedPost = $post->execute(array($title, $content));
+        $post->execute(array($title, $content));
     }
     public function editPost($title,$content){
         $db = $this->connectToDB();
         $post = $db -> prepare('UPDATE posts set title = ?, content = ? WHERE id = ?');
-        $varId = $_GET['id'];
-        $post->execute(array($title, $content, $varId));
+        $post->execute(array($title, $content, $_GET['id']));
     }
     public function deletePost($id){
         $db= $this->connectToDB();
@@ -49,6 +45,18 @@ class BackEndManager
         $db= $this->connectToDB();
         $comments = $db -> prepare('DELETE FROM comments WHERE id = ?');
         $comments -> execute(array($id));
+    }
+    public function showComment($id){
+        $db = $this ->connectToDB();
+        $getComment = $db -> prepare('SELECT id, author, comment, comment_date FROM comments WHERE id = ?');
+        $getComment->execute(array($id));
+        $comment = $getComment->fetch();
+        return $comment;
+    }
+    public function editComment($author,$comment){
+        $db = $this->connectToDB();
+        $post = $db -> prepare('UPDATE comments set author = ?, comment = ? WHERE id = ?');
+        $post->execute(array($author, $comment, $_GET['id']));
     }
     private function connectToDB(){
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');

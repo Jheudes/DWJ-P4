@@ -30,11 +30,13 @@ function commentManager(){
 function addPostToDB($title,$content){
     $postToAdd = new BackEndManager();
     $post = $postToAdd-> postToAdd($title,$content);
+    require('view/backend/adminhomepage.php');
 
 }
 function updateThisPost($title,$content){
     $postEdit = new BackEndManager();
     $post = $postEdit -> editPost($title,$content);
+    require('view/backend/adminhomepage.php');
 
 }
 function deleteThisPost($id){
@@ -45,6 +47,16 @@ function deleteThisPost($id){
 function deleteThisComment($id){
     $deleteComment = new BackEndManager();
     $comment = $deleteComment -> deleteComment($id);
+    require('view/backend/adminhomepage.php');
+}
+function showOneComment(){
+    $showComment = new BackEndManager();
+    $comment = $showComment -> showComment($_GET['id']);
+    require('view/backend/editcomment.php');
+}
+function updateThisComment($author,$comment){
+    $commentEdit = new BackEndManager();
+    $comment = $commentEdit -> editComment($author,$comment);
     require('view/backend/adminhomepage.php');
 }
 
