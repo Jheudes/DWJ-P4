@@ -31,6 +31,25 @@ class BackEndManager
         $post = $db->prepare('INSERT INTO `posts`(`title`, `content`, `creation_date`) VALUES(?, ?, NOW())');
         $affectedPost = $post->execute(array($title, $content));
     }
+    public function editPost($title,$content){
+        $db = $this->connectToDB();
+        $post = $db -> prepare('UPDATE posts set title = ?, content = ? WHERE id = ?');
+        $varId = $_GET['id'];
+        $post->execute(array($title, $content, $varId));
+    }
+    public function deletePost($id){
+        $db= $this->connectToDB();
+        $post = $db -> prepare('DELETE FROM posts WHERE id = ?');
+        $post->execute(array($id));
+
+        $comments = $db -> prepare('DELETE FROM comments WHERE post_id = ?');
+        $comments -> execute(array($id));
+    }
+    public function deleteComment($id){
+        $db= $this->connectToDB();
+        $comments = $db -> prepare('DELETE FROM comments WHERE id = ?');
+        $comments -> execute(array($id));
+    }
     private function connectToDB(){
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         return $db;

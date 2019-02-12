@@ -32,6 +32,21 @@ function addPostToDB($title,$content){
     $post = $postToAdd-> postToAdd($title,$content);
 
 }
+function updateThisPost($title,$content){
+    $postEdit = new BackEndManager();
+    $post = $postEdit -> editPost($title,$content);
+
+}
+function deleteThisPost($id){
+    $deletePost = new BackEndManager();
+    $post = $deletePost -> deletePost($id);
+    require('view/backend/adminhomepage.php');
+}
+function deleteThisComment($id){
+    $deleteComment = new BackEndManager();
+    $comment = $deleteComment -> deleteComment($id);
+    require('view/backend/adminhomepage.php');
+}
 
 
 

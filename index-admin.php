@@ -23,12 +23,22 @@ if(isset($_GET['action'])){
     else if($_GET['action'] == 'addThisPostToDB'){
         addPostToDB($_POST['title'], $_POST['content']);
     }
+    else if($_GET['action'] == 'updateThisPost'){
+        updateThisPost($_POST['edittitle'], $_POST['updatedcontent']);
+    }
+    else if($_GET['action'] == 'deleteThisPost'){
+        deleteThisPost($_GET['id']);
+
+    }
+    else if($_GET['action'] == 'commentToDelete'){
+        deleteThisComment($_GET['id']);
+
+    }
 
 }
 else {
     showAdminHomePage();
 }
-
 
 
 

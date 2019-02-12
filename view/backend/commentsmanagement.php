@@ -23,7 +23,8 @@ while ($data = $comments->fetch())
         <em>| du billet n° <?= $data['post_id'] ?></em>
     </h3>
 
-    <a href="index-admin.php?action=commentToEdit&amp;id=<?= $data['id'] ?>">editer</a>
+    <a href="index-admin.php?action=commentToEdit&amp;id=<?= $data['id'] ?>">Modifier</a>
+    <a href="index-admin.php?action=commentToDelete&amp;id=<?= $data['id'] ?>">supprimer</a>
     <?php
     }
     $comments->closeCursor();

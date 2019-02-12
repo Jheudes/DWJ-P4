@@ -35,13 +35,24 @@
 
         <script>
             tinymce.init({
-                selector:'#editarea',
-
+                selector:'#edittitle',
+                inline: true,
+                menubar: false,
+                toolbar: 'undo redo'
             });
-
+        </script>
+        <script>
+            tinymce.init({
+                selector:'#updatedcontent',
+            });
         </script>
 
-        <textarea id="editarea"></textarea>
+        <form method="post" action="index-admin.php?action=updateThisPost&amp;id=<?= $post['id'] ?>">
+            <textarea id="edittitle" name="edittitle"><?= $post['title'] ?></textarea>
+            <textarea id="updatedcontent" name="updatedcontent"><?= $post['content'] ?></textarea>
+            <input type="submit">
+        </form>
+    <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post['id'] ?>">supprimer le post</a>
 
     </body>
 </html>

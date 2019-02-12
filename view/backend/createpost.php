@@ -28,7 +28,7 @@
     </script>
     <form method="post" action="index-admin.php?action=addThisPostToDB">
     <textarea id="title" name="title">Titre ici</textarea><br/>
-    <textarea id="content" name="content"></textarea>
+    <textarea id="content" name="content">Ecrit ton post ici =)</textarea>
     <input type='submit'/>
     </form>
 
