@@ -30,9 +30,8 @@ class AllPostsManager
 
     public function addComment($postId, $author, $comment){
         $db= $this->connectToDB();
-        $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(post_id, author, comment,report, comment_date) VALUES(?, ?, ?,false, NOW())');
         $affectedLines = $comments->execute(array($postId, $author, $comment));
-
     }
 
 

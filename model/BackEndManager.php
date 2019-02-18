@@ -1,5 +1,5 @@
 <?php
-
+//split en post et comment !
 class BackEndManager
 {
 
