@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (isset($_SESSION['userID'])){
 /**
  * if($_GET['post']){
  * affiche post a modif
@@ -18,7 +20,7 @@
 </head>
 <body>
 
-    <a href="index-admin.php">retour au menu</a>
+    <a href="index-admin.php?action=goToMenu">Menu</a>
     <P>choisir le post a modifier</P>
 
 
@@ -41,7 +43,10 @@
 </body>
 </html>
 
-
+<?php }
+else{
+    require('view/backend/adminloginpage.php');
+}
 
 /**
  * Created by PhpStorm.

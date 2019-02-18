@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+if (isset($_SESSION['userID'])){
 /**
  *montre tout les coms avec :
  * -bouton de supretssion
@@ -8,7 +9,7 @@
  *
  */?>
 
-<a href="index-admin.php">retour au menu</a>
+<a href="index-admin.php?action=goToMenu">Menu</a>
 <P>choisir le commentaire a modifier</P>
 
 
@@ -31,6 +32,10 @@ while ($data = $comments->fetch())
     $comments->closeCursor();
     ?>
 
+<?php }
+else{
+    require('view/backend/adminloginpage.php');
+}
 
 /**
  * Created by PhpStorm.

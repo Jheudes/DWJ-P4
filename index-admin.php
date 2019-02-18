@@ -1,51 +1,75 @@
 <?php
 
-require('controller/backend.php');
+require('controller/BackEndManager.php');
 /**
  *if (pas de session) call adminloginpage
  *else call  adminhomepage
  */
 
+
+
 if(isset($_GET['action'])){
+    if($_GET['action'] == 'disconnect'){
+        $backEnd = new BackEndManager();
+        $backEnd -> disconnect();
+    }
+    else if($_GET['action'] == 'goToMenu'){
+        $backEnd = new BackEndManager();
+        $backEnd->goToMenu();
+    }
     if($_GET['action'] == 'createPost'){
-        showCreatePostPage();
+        $backEnd = new BackEndManager();
+        $backEnd -> showCreatePostPage();
     }
     else if($_GET['action'] == 'showAllPosts'){
-        showAllPosts();
+        $backEnd = new BackEndManager();
+        $backEnd -> showAllPosts();
 
     }
     else if($_GET['action'] == 'postToEdit'){
-        postEditor();
+        $backEnd = new BackEndManager();
+        $backEnd -> postEditor();
     }
     else if($_GET['action'] == 'commentManager'){
-        commentManager();
+        $backEnd = new BackEndManager();
+        $backEnd -> commentManager();
     }
     else if($_GET['action'] == 'addThisPostToDB'){
-        addPostToDB($_POST['title'], $_POST['content']);
+        $backEnd = new BackEndManager();
+        $backEnd -> addPostToDB($_POST['title'], $_POST['content']);
     }
     else if($_GET['action'] == 'updateThisPost'){
-        updateThisPost($_POST['edittitle'], $_POST['updatedcontent']);
+        $backEnd = new BackEndManager();
+        $backEnd -> updateThisPost($_POST['edittitle'], $_POST['updatedcontent']);
     }
     else if($_GET['action'] == 'deleteThisPost'){
-        deleteThisPost($_GET['id']);
+        $backEnd = new BackEndManager();
+        $backEnd -> deleteThisPost($_GET['id']);
 
     }
     else if($_GET['action'] == 'commentToDelete'){
-        deleteThisComment($_GET['id']);
+        $backEnd = new BackEndManager();
+        $backEnd -> deleteThisComment($_GET['id']);
 
     }
     else if($_GET['action'] == 'commentToEdit'){
-        showOneComment($_GET['id']);
+        $backEnd = new BackEndManager();
+        $backEnd -> showOneComment($_GET['id']);
     }
     else if($_GET['action'] == 'updateThisComment'){
-        updateThisComment($_POST['editauthor'], $_POST['updatedcomment']);
+        $backEnd = new BackEndManager();
+        $backEnd -> updateThisComment($_POST['editauthor'], $_POST['updatedcomment']);
+    }
+    else if($_GET['action'] == 'tryConnect'){
+        $backEnd = new BackEndManager();
+        $backEnd -> tryConnect($_POST['nickname'], $_POST['password']);
     }
 
 }
 else {
-    showAdminHomePage();
+    $backEnd = new BackEndManager();
+    $backEnd -> showAdminLoginPage();
 }
-
 
 
 /**

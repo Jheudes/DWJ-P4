@@ -21,6 +21,7 @@
         <meta charset="utf-8" />
         <title>Blog Incroyable</title>
         <link href="public/css/style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
     <body>
 
@@ -57,10 +58,6 @@
         </form>
 
 
-
-
-
-
         <?php
         while ($comment = $comments->fetch())
         {
@@ -68,6 +65,12 @@
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <?php
+            if ($comment['report']) {
+                echo '<p class="signaledComment">red flag</p>';
+            }
+            else{
+                echo '<p class="trustedComment">green flag</p>';
+            }
         }
         ?>
 
