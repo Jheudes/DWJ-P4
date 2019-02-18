@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+if (isset($_SESSION['userID'])){
 /**interface wysiwyg*/
 ?>
 <html>
@@ -10,7 +11,7 @@
         <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=pzrgzgwtphqwvf4ygn3mcsg1t1rnqk8z1n44qdlgwow213do"></script>
     </head>
     <body>
-    <a href="index-admin.php">Page acceuil</a>
+    <a href="index-admin.php?action=goToMenu">Menu</a>
     <p>interface WYSIWYG</p>
 
     <script>
@@ -35,7 +36,10 @@
 
     </body>
 </html>
-
+<?php }
+else{
+    require('view/backend/adminloginpage.php');
+}
 
 
 /**

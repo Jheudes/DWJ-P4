@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (isset($_SESSION['userID'])){
 /**
  * Created by PhpStorm.
  * User: Jimmy
@@ -20,6 +22,7 @@
     <body>
 
         <h1>Modification de commentaire</h1>
+        <a href="index-admin.php?action=goToMenu">Menu</a>
         <p><a href="index-admin.php?action=showAllPosts">changer de billet</a></p>
         <div class="news">
             <h3>
@@ -52,3 +55,8 @@
 
     </body>
 </html>
+
+<?php }
+else{
+    require('view/backend/adminloginpage.php');
+}

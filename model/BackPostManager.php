@@ -1,6 +1,6 @@
 <?php
 //split en post et comment !
-class BackEndManager
+class BackPostManager
 {
 
     public function showAllPosts(){
@@ -16,12 +16,6 @@ class BackEndManager
         $post = $req->fetch();
 
         return $post;
-    }
-    public function loadComments(){
-        $db = $this->connectToDB();
-        $comments = $db->query('SELECT id, author, post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
-
-        return $comments;
     }
     public function postToAdd($title,$content){
         $db = $this->connectToDB();
@@ -40,6 +34,13 @@ class BackEndManager
 
         $comments = $db -> prepare('DELETE FROM comments WHERE post_id = ?');
         $comments -> execute(array($id));
+    }
+
+    public function loadComments(){
+        $db = $this->connectToDB();
+        $comments = $db->query('SELECT id, author, post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
+
+        return $comments;
     }
     public function deleteComment($id){
         $db= $this->connectToDB();
