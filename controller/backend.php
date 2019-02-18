@@ -1,5 +1,5 @@
 <?php
-
+//class ! here
 function showAdminHomePage(){
     require('view/backend/adminhomepage.php');
 }

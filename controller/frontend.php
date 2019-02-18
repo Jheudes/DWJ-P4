@@ -19,9 +19,9 @@ function showThisPost(){
 }
 function addComment($postId, $author, $comment){
     $commentAdder = new AllPostsManager();
-    $comment = $commentAdder->addComment($postId,$author,$comment);
+    $commentAdder->addComment($postId,$author,$comment);
 
-    header('Location: index.php?action=post&id=' . $postId);
+    header('Location: index.php?action=post&id='.$postId);
 
 }
 
