@@ -24,6 +24,10 @@ if(isset($_GET['action'])){
         }
     }
 
+    else if ($_GET['action']=='flagThisComment'){
+        flagComment($_GET['comId']);
+        showThisPost();
+    }
     //else if ($_GET['action']==''){    }
 
 }

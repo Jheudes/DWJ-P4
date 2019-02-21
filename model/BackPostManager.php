@@ -1,20 +1,28 @@
 <?php
 //split en post et comment !
+require('entity/Post.php');
+
 class BackPostManager
 {
 
     public function showAllPosts(){
+        $posts = [];
         $db = $this->connectToDB();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date ');
-
-        return $req;
+        foreach ($req->fetchAll() as $data){
+            $post = new Post();
+            $post->createPost($data);
+            $posts[] = $post;
+        }
+        return $posts;
     }
-    public function loadPostToEdit($postId){
+    public function loadPostToEdit($postId){//BG ici
         $db = $this->connectToDB();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
-        $post = $req->fetch();
-
+        $data = $req->fetch();
+        $post = new Post();
+        $post->createPost($data);
         return $post;
     }
     public function postToAdd($title,$content){

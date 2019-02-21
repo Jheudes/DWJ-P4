@@ -34,6 +34,12 @@ class AllPostsManager
         $affectedLines = $comments->execute(array($postId, $author, $comment));
     }
 
+    public function flagThisComment($comId){
+        $db = $this->connectToDB();
+        $comment = $db->prepare('UPDATE report FROM comments WHERE id= ?');
+        $comment->exec(array($comId));
+    }
+
 
 
 

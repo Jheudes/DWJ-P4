@@ -65,6 +65,7 @@ if(isset($_GET['action'])){
         $backEnd -> tryConnect($_POST['nickname'], $_POST['password']);
     }
 
+
 }
 else {
     $backEnd = new BackEndManager();

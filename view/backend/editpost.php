@@ -18,7 +18,7 @@ if (isset($_SESSION['userID'])){
 
     </head>
     <body>
-
+<?php var_dump($post);die; ?>
 
         <a href="index-admin.php?action=goToMenu">Menu</a>
         <h1>Modification de billet</h1>
@@ -26,7 +26,7 @@ if (isset($_SESSION['userID'])){
 
         <div class="news">
             <h3>
-                <?= htmlspecialchars($post['title']) ?>
+                <?= htmlspecialchars($post->getTitle()) ?>
                 <em>le <?= $post['creation_date_fr'] ?></em>
             </h3>
 

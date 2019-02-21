@@ -68,8 +68,9 @@
             if ($comment['report']) {
                 echo '<p class="signaledComment">red flag</p>';
             }
-            else{
-                echo '<p class="trustedComment">green flag</p>';
+            else{?>
+                <a href="index.php?action=flagThisComment&amp;comId=<?= $comment['id'] ?>&amp;id=<?= $post['id']?>" class="trustedComment">green flag</a>
+        <?php
             }
         }
         ?>
