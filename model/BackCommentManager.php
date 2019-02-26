@@ -48,6 +48,12 @@ class BackCommentManager
         $post->execute(array($author, $comment, $_GET['id']));
     }
 
+    public function unflagThisComment($comId){
+        $db = $this->connectToDB();
+        $comment = $db->prepare('UPDATE comments SET report = 0 WHERE id = ?');
+        $comment->execute(array($comId));
+    }
+
     private function connectToDB(){
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         return $db;

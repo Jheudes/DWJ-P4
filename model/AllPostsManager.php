@@ -34,8 +34,8 @@ class AllPostsManager
 
     public function flagThisComment($comId){
         $db = $this->connectToDB();
-        $comment = $db->prepare('UPDATE report FROM comments WHERE id= ?');
-        $comment->exec(array($comId));
+        $comment = $db->prepare('UPDATE comments SET report = 1 WHERE id = ?');
+        $comment->execute(array($comId));
     }
 
     private function connectToDB(){

@@ -69,7 +69,7 @@ class BackEndManager
     {
         $commentsManager = new BackCommentManager();
         $comments = $commentsManager->loadReportedComments();
-        require('view/backend/commentsmanagement.php');
+        require('view/backend/editsignaledcomments.php');
     }
 
     public function addPostToDB($title, $content)
@@ -115,6 +115,13 @@ class BackEndManager
         $comment = $commentEdit->editComment($author, $comment);
         require('view/backend/adminhomepage.php');
     }
+    public function unflagThisComment($comId)
+    {
+        $commentEdit = new BackCommentManager();
+        $comment = $commentEdit->unflagThisComment($comId);
+        $this->showReportedComments();
+    }
+
 
 }
 

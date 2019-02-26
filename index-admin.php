@@ -68,6 +68,10 @@ if(isset($_GET['action'])){
         $backEnd = new BackEndManager();
         $backEnd -> showReportedComments();
     }
+    else if($_GET['action'] == 'unflagComment'){
+        $backEnd = new BackEndManager();
+        $backEnd -> unflagThisComment($_GET['id']);
+    }
 
 
 }
