@@ -64,6 +64,10 @@ if(isset($_GET['action'])){
         $backEnd = new BackEndManager();
         $backEnd -> tryConnect($_POST['nickname'], $_POST['password']);
     }
+    else if($_GET['action'] == 'signaledComment'){
+        $backEnd = new BackEndManager();
+        $backEnd -> showReportedComments();
+    }
 
 
 }
@@ -72,10 +76,3 @@ else {
     $backEnd -> showAdminLoginPage();
 }
 
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 10:47
- */

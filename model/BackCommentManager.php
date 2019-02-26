@@ -1,11 +1,30 @@
 <?php
+require('entity/Comment.php');
+
 class BackCommentManager
 {
 
     public function loadComments(){
+        $comments = [];
         $db = $this->connectToDB();
-        $comments = $db->query('SELECT id, author, post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
+        $req = $db->query('SELECT id, author, post_id, comment, report, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
+        foreach ($req->fetchAll() as $data){
+            $comment = new Comment();
+            $comment->createComment($data);
+            $comments[] = $comment;
+        }
+        return $comments;
+    }
 
+    public function loadReportedComments(){
+        $comments = [];
+        $db = $this->connectToDB();
+        $req = $db->query('SELECT id, author, post_id, comment, report, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE report = 1 ORDER BY comment_date ');
+        foreach ($req->fetchAll() as $data){
+            $comment = new Comment();
+            $comment->createComment($data);
+            $comments[] = $comment;
+        }
         return $comments;
     }
 
@@ -29,17 +48,9 @@ class BackCommentManager
         $post->execute(array($author, $comment, $_GET['id']));
     }
 
-
     private function connectToDB(){
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         return $db;
 
     }
-
 }
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 18/02/2019
- * Time: 12:17
- */

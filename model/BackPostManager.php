@@ -1,5 +1,4 @@
 <?php
-//split en post et comment !
 require('entity/Post.php');
 
 class BackPostManager
@@ -72,15 +71,4 @@ class BackPostManager
         return $db;
 
     }
-
-
-
-
 }
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 09/02/2019
- * Time: 11:53
- */

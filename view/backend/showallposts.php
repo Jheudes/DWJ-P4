@@ -24,21 +24,15 @@ if (isset($_SESSION['userID'])){
     <P>choisir le post a modifier</P>
 
 
-    <?php
-    while ($data = $posts->fetch())
-    {
-        ?>
+    <?php foreach ($posts as $post):?>
         <div class="postedit">
             <h3>
-                <?= htmlspecialchars($data['title']) ?>
-                <em>le <?= $data['creation_date_fr'] ?></em>
+                <?= htmlspecialchars($post->getTitle()) ?>
+                <em>le <?= $post->getCreationDate() ?></em>
             </h3>
 
-            <a href="index-admin.php?action=postToEdit&amp;id=<?= $data['id'] ?>">editer</a>
-        <?php
-    }
-    $posts->closeCursor();
-    ?>
+            <a href="index-admin.php?action=postToEdit&amp;id=<?= $post->getId() ?>">editer</a>
+        <?php endforeach; ?>
 
 </body>
 </html>

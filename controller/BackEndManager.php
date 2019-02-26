@@ -65,6 +65,12 @@ class BackEndManager
         $comments = $commentsManager->loadComments();
         require('view/backend/commentsmanagement.php');
     }
+    public function showReportedComments()
+    {
+        $commentsManager = new BackCommentManager();
+        $comments = $commentsManager->loadReportedComments();
+        require('view/backend/commentsmanagement.php');
+    }
 
     public function addPostToDB($title, $content)
     {
@@ -109,6 +115,7 @@ class BackEndManager
         $comment = $commentEdit->editComment($author, $comment);
         require('view/backend/adminhomepage.php');
     }
+
 }
 
 

@@ -18,7 +18,6 @@ if (isset($_SESSION['userID'])){
 
     </head>
     <body>
-<?php var_dump($post);die; ?>
 
         <a href="index-admin.php?action=goToMenu">Menu</a>
         <h1>Modification de billet</h1>
@@ -27,11 +26,11 @@ if (isset($_SESSION['userID'])){
         <div class="news">
             <h3>
                 <?= htmlspecialchars($post->getTitle()) ?>
-                <em>le <?= $post['creation_date_fr'] ?></em>
+                <em>le <?= $post->getCreationDate() ?></em>
             </h3>
 
             <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
+                <?= nl2br(htmlspecialchars($post->getContent())) ?>
             </p>
         </div>
 
@@ -49,12 +48,12 @@ if (isset($_SESSION['userID'])){
             });
         </script>
 
-        <form method="post" action="index-admin.php?action=updateThisPost&amp;id=<?= $post['id'] ?>">
-            <textarea id="edittitle" name="edittitle"><?= $post['title'] ?></textarea>
-            <textarea id="updatedcontent" name="updatedcontent"><?= $post['content'] ?></textarea>
+        <form method="post" action="index-admin.php?action=updateThisPost&amp;id=<?= $post->getId() ?>">
+            <textarea id="edittitle" name="edittitle"><?= $post->getTitle() ?></textarea>
+            <textarea id="updatedcontent" name="updatedcontent"><?= $post->getContent() ?></textarea>
             <input type="submit">
         </form>
-    <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post['id'] ?>">supprimer le post</a>
+    <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post->getId() ?>">supprimer le post</a>
 
     </body>
 </html>
