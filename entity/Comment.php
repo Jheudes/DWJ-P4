@@ -24,7 +24,6 @@ class Comment
         $this->setReported($data['report']);
     }
 
-
     public function getComment()
     {
         return $this->comment;

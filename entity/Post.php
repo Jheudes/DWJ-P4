@@ -20,6 +20,7 @@ class Post
         $this->setContent($data['content']);
         $this->setCreationDate($data['creation_date_fr']);
     }
+
     public function getTitle()
     {
         return $this->title;
@@ -59,7 +60,4 @@ class Post
     {
         $this->id = $id;
     }
-
-
-
 }

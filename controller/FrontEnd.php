@@ -4,7 +4,6 @@ require_once('model/AllPostsManager.php');
 
 class FrontEnd
 {
-
     public function showAllPosts()
     {
         $postManager = new AllPostsManager();
@@ -26,13 +25,15 @@ class FrontEnd
     {
         $author = trim($author);
         $comment = trim($comment);
-        if (!empty($comment) && !empty($author) && !empty($postId)) {
+        if (!empty($comment) && !empty($author) && !empty($postId)){//if nothing is empty
             $commentAdder = new AllPostsManager();
             $commentAdder->addComment($postId, $author, $comment);
 
             header('Location: index.php?action=post&id=' . $postId);
         }
-        else {header('Location: index.php?action=post&id=' . $postId);}
+        else {
+            header('Location: index.php?action=post&id=' . $postId);
+        }
     }
 
     public function flagComment($comId)

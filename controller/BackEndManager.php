@@ -10,10 +10,13 @@ class BackEndManager
     {
         require('view/backend/adminloginpage.php');
     }
+
     public function goToMenu(){
         require('view/backend/adminhomepage.php');
     }
-    public function tryConnect($nickname,$password){
+
+    public function tryConnect($nickname,$password)
+    {
         $tryConnect = new LoginManager();
         $result = $tryConnect -> isItOk($nickname);
         $passwordCompare = password_verify($password,$result['password']);
@@ -34,6 +37,7 @@ class BackEndManager
         session_destroy();
         require('view/backend/adminloginpage.php');
     }
+
     public function showAdminHomePage()
     {
         require('view/backend/adminhomepage.php');
@@ -43,8 +47,6 @@ class BackEndManager
     {
         require('view/backend/createpost.php');
     }
-
-
 
     public function showAllPosts()
     {
@@ -68,6 +70,7 @@ class BackEndManager
         $comments = $commentsManager->loadComments();
         require('view/backend/commentsmanagement.php');
     }
+
     public function showReportedComments()
     {
         $commentsManager = new BackCommentManager();
@@ -118,6 +121,7 @@ class BackEndManager
         $comment = $commentEdit->editComment($author, $comment);
         require('view/backend/adminhomepage.php');
     }
+
     public function unflagThisComment($comId)
     {
         $commentEdit = new BackCommentManager();
@@ -125,13 +129,3 @@ class BackEndManager
         $this->showReportedComments();
     }
 }
-
-
-
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 10:48
- */
