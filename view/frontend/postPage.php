@@ -20,11 +20,10 @@
     <head>
         <meta charset="utf-8" />
         <title>Blog Incroyable</title>
-        <link href="public/css/style.css" rel="stylesheet" />
+        <link href="public/css/postpage.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
     <body>
-
 
 
         <h1>Mon super blog !</h1>
@@ -78,13 +77,3 @@
     </body>
 </html>
 
-
-
-
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 11:24
- */

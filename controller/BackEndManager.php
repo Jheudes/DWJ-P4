@@ -6,7 +6,8 @@ require_once('model/LoginManager.php');
 
 class BackEndManager
 {
-    public function showAdminLoginPage(){
+    public function showAdminLoginPage()
+    {
         require('view/backend/adminloginpage.php');
     }
     public function goToMenu(){
@@ -15,7 +16,8 @@ class BackEndManager
     public function tryConnect($nickname,$password){
         $tryConnect = new LoginManager();
         $result = $tryConnect -> isItOk($nickname);
-        if ($result['password'] == $password){
+        $passwordCompare = password_verify($password,$result['password']);
+        if ($passwordCompare){
             session_start();
             $_SESSION['userID'] = $result['id'];
             require('view/backend/adminhomepage.php');
@@ -25,7 +27,8 @@ class BackEndManager
             echo 'Erreur mdp ou de pseudo';
         }
     }
-    public function disconnect(){
+    public function disconnect()
+    {
         session_start();
         $_SESSION = array();
         session_destroy();
@@ -121,8 +124,6 @@ class BackEndManager
         $comment = $commentEdit->unflagThisComment($comId);
         $this->showReportedComments();
     }
-
-
 }
 
 
