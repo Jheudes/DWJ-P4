@@ -1,23 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 18/02/2019
- * Time: 16:02
- */
 class LoginManager{
 
-    public function isItOk($nickname){
+    public function isItOk($nickname)
+    {
         $db = $this->connectToDB();
         $req = $db->prepare('SELECT id,password FROM members WHERE nickname = ?');
         $req->execute(array($nickname));
         $result = $req->fetch();
+
         return $result;
     }
 
-    private function connectToDB(){
+    private function connectToDB()
+    {
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
-        return $db;
 
+        return $db;
     }
 }

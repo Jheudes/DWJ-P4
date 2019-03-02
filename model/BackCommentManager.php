@@ -1,21 +1,44 @@
 <?php
+require('entity/Comment.php');
+
 class BackCommentManager
 {
 
-    public function loadComments(){
+    public function loadComments()
+    {
+        $comments = [];
         $db = $this->connectToDB();
-        $comments = $db->query('SELECT id, author, post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
-
+        $req = $db->query('SELECT id, author, post_id, comment, report, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date ');
+        foreach ($req->fetchAll() as $data){
+            $comment = new Comment();
+            $comment->createComment($data);
+            $comments[] = $comment;
+        }
         return $comments;
     }
 
-    public function deleteComment($id){
+    public function loadReportedComments()
+    {
+        $comments = [];
+        $db = $this->connectToDB();
+        $req = $db->query('SELECT id, author, post_id, comment, report, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE report = 1 ORDER BY comment_date ');
+        foreach ($req->fetchAll() as $data){
+            $comment = new Comment();
+            $comment->createComment($data);
+            $comments[] = $comment;
+        }
+        return $comments;
+    }
+
+    public function deleteComment($id)
+    {
         $db= $this->connectToDB();
         $comments = $db -> prepare('DELETE FROM comments WHERE id = ?');
         $comments -> execute(array($id));
     }
 
-    public function showComment($id){
+    public function showComment($id)
+    {
         $db = $this ->connectToDB();
         $getComment = $db -> prepare('SELECT id, author, comment, comment_date FROM comments WHERE id = ?');
         $getComment->execute(array($id));
@@ -23,23 +46,24 @@ class BackCommentManager
         return $comment;
     }
 
-    public function editComment($author,$comment){
+    public function editComment($author,$comment)
+    {
         $db = $this->connectToDB();
         $post = $db -> prepare('UPDATE comments set author = ?, comment = ? WHERE id = ?');
         $post->execute(array($author, $comment, $_GET['id']));
     }
 
+    public function unflagThisComment($comId)
+    {
+        $db = $this->connectToDB();
+        $comment = $db->prepare('UPDATE comments SET report = 0 WHERE id = ?');
+        $comment->execute(array($comId));
+    }
 
-    private function connectToDB(){
+    private function connectToDB()
+    {
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         return $db;
 
     }
-
 }
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 18/02/2019
- * Time: 12:17
- */

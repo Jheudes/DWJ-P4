@@ -21,39 +21,36 @@
 <head>
     <meta charset="utf-8" />
     <title>Blog Incroyable</title>
-    <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="http:/DWJ-P4\public\css\style.css" >
 </head>
 <body>
-    <h1> Bienvenue a tous surmon blog</h1>
-    <P>ici sont redigés tous les billets liés a mon voyage</P>
+    <div class="mainWrapper">
+        <h1> Bienvenue a tous sur mon blog</h1>
+        <P>ici sont redigés tous les billets liés a mon voyage</P>
 
 
+        <div class="newsContainer">
 
+            <?php foreach ($posts as $post):?>
 
-    <?php
-    while ($data = $posts->fetch())
-    {
-        ?>
-        <div class="news">
-            <h3>
-                <?= htmlspecialchars($data['title']) ?>
-                <em>le <?= $data['creation_date_fr'] ?></em>
-            </h3>
+                <div class="news">
+                    <h2>
+                        <?= htmlspecialchars($post->gettitle()) ?>
+                        <em>le <?= $post->getCreationDate() ?></em>
+                    </h2>
 
-            <p>
-                <?= nl2br(htmlspecialchars($data['content'])) ?>
-                <br />
-                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-            </p>
+                    <p>
+                        <?= nl2br(htmlspecialchars($post->getContent())) ?>
+                        <br />
+                        <em><a href="index.php?action=post&amp;id=<?= $post->getId() ?>">Commentaires</a></em>
+                    </p>
+                </div>
+
+            <?php endforeach; ?>
         </div>
-        <?php
-    }
-    $posts->closeCursor();
-    ?>
-
+    </div>
 </body>
 </html>
-
 
 /**
  * Created by PhpStorm.

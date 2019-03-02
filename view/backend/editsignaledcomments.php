@@ -6,7 +6,7 @@
 
     <?php foreach ($comments as $comment):?>
 
-    <div class="commentsToEdit">
+        <div class="commentsToEdit">
         <h3>
             <?= htmlspecialchars($comment->getAuthor()) ?>
             <em>le <?= $comment->getCommentDate() ?></em>
@@ -16,7 +16,8 @@
 
         <a href="index-admin.php?action=commentToEdit&amp;id=<?= $comment->getId() ?>">Modifier</a>
         <a href="index-admin.php?action=commentToDelete&amp;id=<?= $comment->getId() ?>">supprimer</a></div>
+        <a href="index-admin.php?action=unflagComment&amp;id=<?= $comment->getId() ?>">Enlever le report</a>
 
-<?php        endforeach;}
+    <?php        endforeach;}
 else{
     require('view/backend/adminloginpage.php');}

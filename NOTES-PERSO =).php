@@ -75,7 +75,7 @@
 
 
                 $br = '<br>';
-	            echo  __FILE__. $br;//C:\wamp\www\P4\frontend.php indique chemin et le nom du dossier
+	            echo  __FILE__. $br;//C:\wamp\www\P4\FrontEnd.php indique chemin et le nom du dossier
                 echo __DIR__. $br;//C:\wamp\www\P4 le nom du dossier parent
                 echo __LINE__. $br;// le numero de ligne utilisé
 	            function oki(){
@@ -208,8 +208,8 @@
                 echo date('l/N');//Saturday/6
                 echo date('H/i.s');//16/44.51
 
-                var_dump(checkdate(2,45,2019));//C:\wamp\www\P4\frontend.php:12:boolean false permet de check si une date est valide
-	            var_dump(checkdate(2,28,2019));//C:\wamp\www\P4\frontend.php:13:boolean true
+                var_dump(checkdate(2,45,2019));//C:\wamp\www\P4\FrontEnd.php:12:boolean false permet de check si une date est valide
+	            var_dump(checkdate(2,28,2019));//C:\wamp\www\P4\FrontEnd.php:13:boolean true
 
 
 
@@ -265,12 +265,12 @@
                     }
 
                 $_SERVER;//permet de call des données relative au server
-                echo $_SERVER['PHP_SELF'].'<br>';///p4/frontend.php
+                echo $_SERVER['PHP_SELF'].'<br>';///p4/FrontEnd.php
 	            echo $_SERVER['SERVER_ADDR'].'<br>';//::1
 	            echo $_SERVER['SERVER_NAME'].'<br>';//localhost
 	            echo $_SERVER['REQUEST_TIME'].'<br>';//1547365174
 	            echo $_SERVER['REMOTE_ADDR'].'<br>';//::1
-	            echo $_SERVER['SCRIPT_NAME'].'<br>';///p4/frontend.php
+	            echo $_SERVER['SCRIPT_NAME'].'<br>';///p4/FrontEnd.php
 
                 $_REQUEST;// pour recolter les données d'un formulaire
 
@@ -709,7 +709,7 @@
         //part 31 tp creer un petit tchat   ***********************************************************************************
 
 
-                <body>// page frontend.php
+                <body>// page FrontEnd.php
                     <form method="POST" action="index_post.php">
                         <label for="pseudo">Pseudo :</label>
                         <input type="text" name="pseudo" /><br/>
@@ -737,7 +737,7 @@
                         'pseudo' => htmlspecialchars($_POST['pseudo']),
                         'message' => htmlspecialchars($_POST['message'])
                         ));
-                    header('Location: frontend.php');
+                    header('Location: FrontEnd.php');
                 ?> 
                 
                 <?PHP                               

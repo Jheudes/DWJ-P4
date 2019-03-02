@@ -6,16 +6,21 @@ require_once('model/LoginManager.php');
 
 class BackEndManager
 {
-    public function showAdminLoginPage(){
+    public function showAdminLoginPage()
+    {
         require('view/backend/adminloginpage.php');
     }
+
     public function goToMenu(){
         require('view/backend/adminhomepage.php');
     }
-    public function tryConnect($nickname,$password){
+
+    public function tryConnect($nickname,$password)
+    {
         $tryConnect = new LoginManager();
         $result = $tryConnect -> isItOk($nickname);
-        if ($result['password'] == $password){
+        $passwordCompare = password_verify($password,$result['password']);
+        if ($passwordCompare){
             session_start();
             $_SESSION['userID'] = $result['id'];
             require('view/backend/adminhomepage.php');
@@ -25,12 +30,14 @@ class BackEndManager
             echo 'Erreur mdp ou de pseudo';
         }
     }
-    public function disconnect(){
+    public function disconnect()
+    {
         session_start();
         $_SESSION = array();
         session_destroy();
         require('view/backend/adminloginpage.php');
     }
+
     public function showAdminHomePage()
     {
         require('view/backend/adminhomepage.php');
@@ -40,8 +47,6 @@ class BackEndManager
     {
         require('view/backend/createpost.php');
     }
-
-
 
     public function showAllPosts()
     {
@@ -64,6 +69,13 @@ class BackEndManager
         $commentsManager = new BackCommentManager();
         $comments = $commentsManager->loadComments();
         require('view/backend/commentsmanagement.php');
+    }
+
+    public function showReportedComments()
+    {
+        $commentsManager = new BackCommentManager();
+        $comments = $commentsManager->loadReportedComments();
+        require('view/backend/editsignaledcomments.php');
     }
 
     public function addPostToDB($title, $content)
@@ -109,14 +121,11 @@ class BackEndManager
         $comment = $commentEdit->editComment($author, $comment);
         require('view/backend/adminhomepage.php');
     }
+
+    public function unflagThisComment($comId)
+    {
+        $commentEdit = new BackCommentManager();
+        $comment = $commentEdit->unflagThisComment($comId);
+        $this->showReportedComments();
+    }
 }
-
-
-
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 10:48
- */

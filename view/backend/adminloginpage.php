@@ -27,7 +27,7 @@ session_start();
 </html>
 
 
-
+<?php echo password_hash('admin',PASSWORD_DEFAULT);
 
 
 /**

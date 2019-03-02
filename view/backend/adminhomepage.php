@@ -25,6 +25,7 @@ if (isset($_SESSION['userID'])){
     <a href="index-admin.php?action=disconnect">déconexion</a><br/><br/>
     <a href="index-admin.php?action=createPost">Crée un nouveau post</a><br/>
     <a href="index-admin.php?action=showAllPosts">Editer un post</a><br/>
+    <a href="index-admin.php?action=signaledComment">Commentaires signalés</a><br/>
     <a href="index-admin.php?action=commentManager">Moderer les commentaires</a><br/>
     </body>
 </html>

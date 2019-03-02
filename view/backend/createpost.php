@@ -40,11 +40,3 @@ if (isset($_SESSION['userID'])){
 else{
     require('view/backend/adminloginpage.php');
 }
-
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 11:39
- */
