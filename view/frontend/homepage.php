@@ -1,21 +1,3 @@
-<?php
-
-/**________________
- * header
- * ________________
- * Bienvenue sur mon site hihi
- * ici je vous raconte mes histoires ...
- *
- *   dernier billet
- * billet 9 | billet 8
- * billet 7 | billet 6
- * billet 5 | billet 4
- * ...| premier billet
- * _______________
- * footer
- * _______________
- **/?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +7,8 @@
 </head>
 <body>
     <div class="mainWrapper">
-        <h1> Bienvenue a tous sur mon blog</h1>
-        <P>ici sont redigés tous les billets liés a mon voyage</P>
+        <h1 class="center"> Bienvenue a tous sur mon blog.</h1>
+        <P class="center">Ici seront redigés tous les billets liés a mon livre</P>
 
 
         <div class="newsContainer">
@@ -36,14 +18,13 @@
                 <div class="news">
                     <h2>
                         <?= htmlspecialchars($post->gettitle()) ?>
-                        <em>le <?= $post->getCreationDate() ?></em>
                     </h2>
 
-                    <p>
+                    <div class="contentContainer">
                         <?= nl2br(htmlspecialchars($post->getContent())) ?>
-                        <br />
-                        <em><a href="index.php?action=post&amp;id=<?= $post->getId() ?>">Commentaires</a></em>
-                    </p>
+                    </div>
+                    <em><a href="index.php?action=post&amp;id=<?= $post->getId() ?>">Lire le post</a></em>
+                    <em class="date">Jean le <?= $post->getCreationDate() ?></em>
                 </div>
 
             <?php endforeach; ?>
@@ -51,10 +32,3 @@
     </div>
 </body>
 </html>
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 11:24
- */
