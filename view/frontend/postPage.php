@@ -31,18 +31,18 @@
 
         <div class="news">
             <h3>
-                <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['creation_date_fr'] ?></em>
+                <?= htmlspecialchars($post->getTitle()) ?>
+                <em>le <?= $post->getCreationDate() ?></em>
             </h3>
 
             <p>
-                <?= nl2br($post['content']) ?>
+                <?= nl2br($post->getContent()) ?>
             </p>
         </div>
 
         <h2>Commentaires</h2>
 
-        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+        <form action="index.php?action=addComment&amp;id=<?= $post->getId() ?>" method="post">
             <div>
                 <label for="author">Auteur</label><br />
                 <input type="text" id="author" name="author" />
@@ -57,22 +57,16 @@
         </form>
 
 
-        <?php
-        while ($comment = $comments->fetch())
-        {
-            ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <?php foreach ($comments as $comment):?>
+            <p><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?></p>
+            <p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p>
             <?php
-            if ($comment['report']) {
+            if (!empty($comment->getReported())) {
                 echo '<p class="signaledComment">red flag</p>';
             }
             else{?>
-                <a href="index.php?action=flagThisComment&amp;comId=<?= $comment['id'] ?>&amp;id=<?= $post['id']?>" class="trustedComment">green flag</a>
-        <?php
-            }
-        }
-        ?>
+                <a href="index.php?action=flagThisComment&amp;comId=<?= $comment->getId() ?>&amp;id=<?= $post->getId()?>" class="trustedComment">green flag</a>
+        <?php }       endforeach; ?>
 
     </body>
 </html>
