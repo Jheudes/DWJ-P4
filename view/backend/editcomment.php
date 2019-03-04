@@ -14,7 +14,7 @@ if (isset($_SESSION['userID'])){
     <head>
         <meta charset="utf-8" />
         <title>Blog Incroyable</title>
-        <link href="public/css/style.css" rel="stylesheet" />
+        <link href="public/css/backendEditComment.css" rel="stylesheet" />
         <script type="text/javascript" src="https://code.jquery.com/jqery-lastest.min.js"></script>
         <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=pzrgzgwtphqwvf4ygn3mcsg1t1rnqk8z1n44qdlgwow213do"></script>
 
@@ -46,13 +46,11 @@ if (isset($_SESSION['userID'])){
                 selector:'#updatedcomment',
             });
         </script>
-
         <form method="post" action="index-admin.php?action=updateThisComment&amp;id=<?= $comment['id'] ?>">
             <textarea id="editauthor" name="editauthor"><?= $comment['author'] ?></textarea>
             <textarea id="updatedcomment" name="updatedcomment"><?= $comment['comment'] ?></textarea>
             <input type="submit">
         </form>
-
     </body>
 </html>
 

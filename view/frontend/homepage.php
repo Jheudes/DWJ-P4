@@ -16,15 +16,12 @@
             <?php foreach ($posts as $post):?>
 
                 <div class="news">
+                    <a class="Read" href="index.php?action=post&amp;id=<?= $post->getId() ?>">
                     <h2>
                         <?= htmlspecialchars($post->gettitle()) ?>
                     </h2>
-
-                    <div class="contentContainer">
-                        <?= nl2br(htmlspecialchars($post->getContent())) ?>
-                    </div>
-                    <em><a href="index.php?action=post&amp;id=<?= $post->getId() ?>">Lire le post</a></em>
-                    <em class="date">Jean le <?= $post->getCreationDate() ?></em>
+                    <p class="date">Jean le <?= $post->getCreationDate() ?></p>
+                    </a>
                 </div>
 
             <?php endforeach; ?>

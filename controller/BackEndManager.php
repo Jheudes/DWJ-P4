@@ -105,7 +105,7 @@ class BackEndManager
     {
         $deleteComment = new BackCommentManager();
         $comment = $deleteComment->deleteComment($id);
-        require('view/backend/adminhomepage.php');
+        $this->showReportedComments();
     }
 
     public function showOneComment()
