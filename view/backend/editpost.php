@@ -20,8 +20,9 @@ if (isset($_SESSION['userID'])){
     <body>
 
         <a href="index-admin.php?action=goToMenu">Menu</a>
-        <h1>Modification de billet</h1>
         <p><a href="index-admin.php?action=showAllPosts">changer de billet</a></p>
+        <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post->getId() ?>">supprimer le post</a>
+        <h1>Modification de billet</h1>
 
         <div class="news">
             <h3>
@@ -30,7 +31,7 @@ if (isset($_SESSION['userID'])){
             </h3>
 
             <p>
-                <?= nl2br(htmlspecialchars($post->getContent())) ?>
+                <?= $post->getContent() ?>
             </p>
         </div>
 
@@ -53,7 +54,6 @@ if (isset($_SESSION['userID'])){
             <textarea id="updatedcontent" name="updatedcontent"><?= $post->getContent() ?></textarea>
             <input type="submit">
         </form>
-    <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post->getId() ?>">supprimer le post</a>
 
     </body>
 </html>

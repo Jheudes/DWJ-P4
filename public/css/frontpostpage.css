@@ -1,0 +1,97 @@
+/*les bases*/
+html, body{
+    width:100%;
+    height:100%;
+    background-color: #000515;
+    color: #e2e2e2;
+    margin:0;
+    font-size: 20px;
+}
+.mainWrapper{
+    width:100%;
+    height:100%;
+}
+.backToHome{
+    background-color: #474747;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 1% 1% 1% 1%;
+}
+.news{
+    width:80%;
+    border: 10px solid #000000;
+    border-radius:15px 15px 75px 75px;
+    margin:auto;
+    padding: 1%;
+    background-color: #474747;
+    text-align: center;
+}
+.form{
+    background-color: #474747;
+    width: 50%;
+    margin:1% auto 1% auto;
+    padding: 1px 1% 2% 1%;
+    border-radius: 5px 5px 50px 50px;
+}
+
+.center{
+    text-align: center;
+}
+
+.backToHome:visited,.backToHome:link,.backToHome:active,.backToHome:hover{
+    text-decoration-line: none;
+    color: #e2e2e2;
+}
+/*Les articles*/
+
+.comment{
+    width:47%;
+    border: 10px solid #000000;
+    border-radius:15px 15px 35px 35px;
+    margin:auto;
+    padding-bottom:1%;
+    background-color: #474747;
+    text-align: center;
+    position: relative;
+}
+.author > strong{
+    font-size: 20px;
+}
+.author{
+    font-size: 14px;
+}
+
+.signaledComment{
+    text-align: right;
+    color: red;
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+
+}
+.notsignaledComment{
+    text-align: right;
+    color: green;
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+}
+.date{
+}
+.contentContainer{
+    width: 90%;
+    margin: 0 auto 0 auto;
+    height:60%;
+    overflow: hidden;
+
+}
+.date{
+    font-size:12px;
+    font-weight: normal;
+    float: right;
+    margin: 0 2% 2% 0;
+    potition: absolute;
+    bottom: 20%;
+    right: 2%;
+}

@@ -105,6 +105,12 @@ class BackEndManager
     {
         $deleteComment = new BackCommentManager();
         $comment = $deleteComment->deleteComment($id);
+        $this->commentManager();
+    }
+    public function deleteThisReportedComment($id)
+    {
+        $deleteComment = new BackCommentManager();
+        $comment = $deleteComment->deleteComment($id);
         $this->showReportedComments();
     }
 

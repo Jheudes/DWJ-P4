@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Blog Incroyable</title>
-    <link rel="stylesheet" type="text/css" href="http:/DWJ-P4\public\css\style.css" >
+    <link rel="stylesheet" type="text/css" href="http:/DWJ-P4\public\css\fronthomepage.css" >
 </head>
 <body>
     <div class="mainWrapper">
