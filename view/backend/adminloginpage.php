@@ -1,10 +1,5 @@
 <?php
-session_start();
-
-/**Nom :
- * MDP :
- * Connexion
- */?>
+session_start();?>
 
 <!DOCTYPE html>
 <html>
@@ -25,14 +20,3 @@ session_start();
         <a href="index-admin.php?action=disconnect">déconexion</a><br/><br/>
     </body>
 </html>
-
-
-<?php echo password_hash('admin',PASSWORD_DEFAULT);
-
-
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 08/02/2019
- * Time: 11:36
- */
