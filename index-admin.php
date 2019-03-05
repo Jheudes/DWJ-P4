@@ -52,6 +52,11 @@ if(isset($_GET['action'])){
         $backEnd -> deleteThisComment($_GET['id']);
 
     }
+    else if($_GET['action'] == 'reportedCommentToDelete'){
+        $backEnd = new BackEndManager();
+        $backEnd -> deleteThisReportedComment($_GET['id']);
+
+    }
     else if($_GET['action'] == 'commentToEdit'){
         $backEnd = new BackEndManager();
         $backEnd -> showOneComment($_GET['id']);

@@ -1,27 +1,24 @@
 <?php
 session_start();
-if (isset($_SESSION['userID'])){
-/**
- * Created by PhpStorm.
- * User: Jimmy
- * Date: 09/02/2019
- * Time: 16:00
- */?>
+if (isset($_SESSION['userID'])){?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <title>Blog Incroyable</title>
-        <link href="public/css/style.css" rel="stylesheet" />
+        <link href="public/css/backendPost&CommentEditor.css" rel="stylesheet" />
         <script type="text/javascript" src="https://code.jquery.com/jqery-lastest.min.js"></script>
         <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=pzrgzgwtphqwvf4ygn3mcsg1t1rnqk8z1n44qdlgwow213do"></script>
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
     <body>
-
-        <a href="index-admin.php?action=goToMenu">Menu</a>
-        <h1>Modification de billet</h1>
-        <p><a href="index-admin.php?action=showAllPosts">changer de billet</a></p>
+        <div class="top">
+            <a class="menu" href="index-admin.php?action=goToMenu"><em class="fas fa-arrow-left"></em> Menu</a>
+            <a href="index-admin.php?action=showAllPosts"><em class="fas fa-arrow-left"></em> changer de billet</a>
+            <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post->getId() ?>"><em class="fas fa-times red"></em> Supprimer</a>
+            <h1>Modification de billet</h1>
+        </div>
 
         <div class="news">
             <h3>
@@ -30,7 +27,7 @@ if (isset($_SESSION['userID'])){
             </h3>
 
             <p>
-                <?= nl2br(htmlspecialchars($post->getContent())) ?>
+                <?= $post->getContent() ?>
             </p>
         </div>
 
@@ -53,7 +50,6 @@ if (isset($_SESSION['userID'])){
             <textarea id="updatedcontent" name="updatedcontent"><?= $post->getContent() ?></textarea>
             <input type="submit">
         </form>
-    <a href="index-admin.php?action=deleteThisPost&amp;id=<?= $post->getId() ?>">supprimer le post</a>
 
     </body>
 </html>
